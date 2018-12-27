@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+</head>
+<body>
+
+
+@{ 
+    var name="";
+}
+    @if (Session["UserName"] != null)
+    {
+
+        name = Session["UserName"].ToString();
+    }
+
+
+
+
+  
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Hotel", "Index", "Home", new { area = "" }, new { @class = "navbar-brand"})
+            </div>
+
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                     
+                      @if (name != "Admin")
+                      {
+                    <li>@Html.ActionLink("Check Room", "Index", "Room")</li>
+                      }
+
+
+                    @if (Session["UserName"] != null && name!="Admin")
+                    {
+
+                    <li>@Html.ActionLink("Profile", "Edit", "Customer")</li>
+                    <li>@Html.ActionLink("View Bookings", "Index", "Booking")</li>
+                    }
+                </ul>
+                
+                    @if (name == "Admin")
+                    { 
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Room", "Detaill", "Room")</li>
+                    <li>@Html.ActionLink("Add Rooms", "New", "Room")</li>
+                    <li>@Html.ActionLink("View Booking", "Index", "Booking")</li>
+
+                </ul>
+                }
+                @if (Session["UserID"] == null)
+                {
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>@Html.ActionLink("Register", "New", "Customer")</li>
+                    <li>@Html.ActionLink("Log in", "Login", "Home")</li>
+                </ul>
+                }
+
+                 @if (Session["UserName"] != null)
+                 {
+                       <ul class="nav navbar-nav navbar-right",color="white">
+                         <li> <h4 style="color:gray"> Welcome @Session["UserName"].ToString() !!</h4></li>
+                              
+                              <li>@Html.ActionLink("Log Off", "LogOff", "Home")</li>
+                        </ul>
+                }
+</div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/scripts/jquery.validate.min.js"></script>
+    <script src="~/scripts/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>

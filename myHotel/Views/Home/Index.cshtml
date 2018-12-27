@@ -1,0 +1,118 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+}
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        font-family: Arial;
+        font-size: 17px;
+    }
+
+    #myVideo {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+    }
+
+    .content {
+        position: fixed;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        color: #f1f1f1;
+        width: 100%;
+        padding: 20px;
+    }
+    .newsize {
+        height: 200px;
+        width: 50%;
+    }
+    .setsize {
+        height: 100px;
+        width: 100%;
+       
+    }
+</style>
+
+
+    <video autoplay muted loop id="myVideo">
+        <source src=~/images/12.webm type="video/mp4">
+        
+    </video>
+<br>
+<br>
+<br>
+
+<div class="setsize">
+    <div id="my-carousel" class="carousel slide ,size" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#my-carousel" data-slide-to="0" class="active"></li>
+            <li data-target="#my-carousel" data-slide-to="1"></li>
+            <li data-target="#my-carousel" data-slide-to="2"></li>
+            <li data-target="#my-carousel" data-slide-to="3"></li>
+            <li data-target="#my-carousel" data-slide-to="4"></li>
+            <li data-target="#my-carousel" data-slide-to="5"></li>
+            <li data-target="#my-carousel" data-slide-to="6"></li>
+            <li data-target="#my-carousel" data-slide-to="7"></li>
+            <li data-target="#my-carousel" data-slide-to="8"></li>
+
+        </ol>
+        <div class="carousel-inner">
+            <div class="item active">
+                <img src="/images/1.jpg" />
+                <div class="carousel-caption">
+
+                </div>
+            </div>
+            <div class="item">
+                <img src="/images/2.jpg" />
+                <div class="carousel-caption">
+
+                </div>
+            </div>
+            <div class="item">
+                <img src="/images/3.jpg" />
+                <div class="carousel-caption">
+
+                </div>
+            </div>
+            <div class="item">
+                <img src="/images/4.jpg" />
+                <div class="carousel-caption"></div>
+            </div>
+            <div class="item">
+                <img src="~/images/5.jpg" />
+                <div class="carousel-caption"></div>
+            </div>
+            <div class="item">
+                <img src="/images/6.jpg" />
+                <div class="carousel-caption"></div>
+            </div>
+            <div class="item">
+                <img src="/images/7.jpg" />
+                <div class="carousel-caption"></div>
+            </div>
+            <div class="item">
+                <img src="~/images/8.png" />
+                <div class="carousel-caption"></div>
+            </div>
+            <div class="item">
+                <img src="/images/9.jpg" />
+                <div class="carousel-caption"></div>
+            </div>
+
+        </div>
+        <a class="left carousel-control" href="#my-carousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="right carousel-control" href="#my-carousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+    </div>
+    </div>

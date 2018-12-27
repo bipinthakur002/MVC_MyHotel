@@ -1,0 +1,30 @@
+﻿@model myHotel.Models.Booking
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Search</h2>
+@using (Html.BeginForm("SearchResult", "Booking"))
+{
+    <div class="form-group">
+        @Html.DisplayText("From")
+        @Html.EditorFor(b => b.CheckIn, new { htmlAttributes = new { @class = "form-control" } })
+      
+    </div>
+    <div class="form-group">
+        @Html.DisplayText("To");
+        @Html.EditorFor(b => b.CheckOut, new { htmlAttributes = new { @class = "form-control" } })
+     
+    </div>
+    <button type="submit" class="btn btn-primary">Check</button>
+}
+
+
+
+
+
+
+
+
+

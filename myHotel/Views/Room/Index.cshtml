@@ -1,0 +1,23 @@
+﻿@model myHotel.Models.Room
+
+@{
+    ViewBag.Title = "Room Types";
+}
+
+<h2>Select Rooms Type </h2>
+
+
+@using (Html.BeginForm("Detail", "Room"))
+{
+
+
+    <div class="form-group">
+        @Html.LabelFor(r => r.Roomtype)
+        @Html.EnumDropDownListFor(r => r.Roomtype, new { @class = "form-control" })
+
+    </div>
+    <button type="submit" class="btn btn-primary">Proceed</button>
+
+}
+
+

@@ -1,0 +1,54 @@
+﻿@model myHotel.Models.Customer
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+
+@{
+    var state = TempData["login"];
+}
+@if (state != null)
+{
+    <div class="alert alert-danger">
+        <strong>Please Enter Valid Email and Password!!</strong>
+    </div>
+}
+
+
+
+
+
+
+
+@using (Html.BeginForm("LoginCheck", "Home"))
+{
+
+
+
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+
+
+
+    <div class="form-group">
+
+        @Html.LabelFor(a => a.Email)
+        <input type="text" name="Email" class="form-control"/>
+        @Html.ValidationMessageFor(c => c.Email, "", new { @style = "color:red" })
+
+    </div>
+            <div class="form-group">
+
+                @Html.LabelFor(a => a.Password)
+                <input type="password" name="Password" class="form-control"/>
+                @Html.ValidationMessageFor(c => c.Password, "", new { @style = "color:red" })
+
+            </div>
+
+            <button type="submit" class="btn btn-primary">Login</button>
+
+}

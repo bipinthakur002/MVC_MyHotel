@@ -1,0 +1,72 @@
+﻿@model myHotel.Models.Room
+
+@{
+    ViewBag.Title = "New";
+}
+<script src="~/scripts/jquery-1.10.2.min.js"></script>
+<script src="~/scripts/jquery.validate.min.js"></script>
+<script src="~/scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/scripts/bootbox.min.js"></script>
+<h2>Rooms</h2>
+
+@using (Html.BeginForm("Save", "Room"))
+{
+    <div class="form-group">
+        @Html.LabelFor(r => r.Price)
+        @Html.TextBoxFor(r => r.Price, "{0:#.#}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(r => r.Price, "", new { @class = "text-danger" })
+
+
+
+
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(r => r.Capacity)
+        @Html.TextBoxFor(r => r.Capacity, "{0:#.#}",new { @class = "form-control" })
+        @Html.ValidationMessageFor(r => r.Capacity, "", new { @class = "text-danger" })
+
+
+
+
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(r => r.TotalRoom)
+        @Html.TextBoxFor(r => r.TotalRoom, "{0:#.#}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(r => r.TotalRoom, "", new { @class = "text-danger" })
+
+
+
+
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(r=>r.Roomtype)
+        @Html.EnumDropDownListFor(r => r.Roomtype,  new { @class = "form-control" })
+        @Html.ValidationMessageFor(r => r.Roomtype, "",new { @class="text-danger"})
+         </div>
+
+
+
+    @Html.HiddenFor(r => r.Id)
+
+   
+        <button type="submit" class="btn btn-primary" >Add</button>
+   
+   
+   
+
+
+}
+@{
+    var room = TempData["room"];
+}
+@if (room != null)
+{
+    <script type="text/javascript">
+            window.onload = function () {
+               bootbox.alert("Room Added !!! ");
+            };
+    </script>
+}
+
+

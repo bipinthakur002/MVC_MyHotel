@@ -1,0 +1,68 @@
+﻿@model IEnumerable<myHotel.Models.Booking>
+
+@{
+    ViewBag.Title = "Bookings";
+    var check = Session["UserName"].ToString();
+}
+
+<h2>Booking List</h2>
+@if (check == "Admin")
+{
+<h3>View Booking Between Selected Date ==> @Html.ActionLink("Click Me!!", "Search", "Booking", new { @class = "btn btn-warning" }) </h3>
+<h3>View Booking Done Today ==> @Html.ActionLink("Click Me!!", "Today", "Booking", new { @class = "btn btn-warning" }) </h3>
+
+<br>
+}
+
+
+@{
+    var count = 0;
+}
+
+
+
+<h4>All Bookings </h4> 
+
+<table id="customer" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Book Id</th>
+            <th>Customer Id</th>
+            <th>Booking Date</th>
+            <th>Check In</th>
+            <th>Check Out</th>
+            <th>Room NO</th>
+            @if (check != "Admin")
+            {
+            <th>Edit</th>
+            <th>Cancel Booking</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+      
+        @foreach (var book in Model)
+        {
+            count++;
+
+
+            <tr>
+                <td>@book.Id</td>
+                <td>@book.CustomerId</td>
+                <td>@book.BookingDate</td>
+                <td>@book.CheckIn</td>
+                <td>@book.CheckOut</td>
+                <td>@book.RoomNo</td>
+               @if (check != "Admin")
+               {
+                <td>    @Html.ActionLink("EDIT", "Edit", "Booking", new { id = @book.Id }, new { @class = "btn btn-warning", @onclick = "return confirm('Are you sure you wish to Edit?');" })</td>
+                <td>    @Html.ActionLink("Cancel", "Delete", "Booking", new { id = @book.Id }, new { @class = "btn btn-danger", @onclick = "return confirm('Are you sure you wish to Cacnel this Booking?');" })</td>
+               }
+            </tr>
+        }
+        
+
+    </tbody>
+
+</table>
+<h4>Total Booking @count</h4>
